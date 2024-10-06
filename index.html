@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brownice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"
+    ></script>
+    <style>
+      @import url("https://fonts.cdnfonts.com/css/euclid-circular-b");
+
+      * {
+        font-family: "Euclid Circular B", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-[#1f1f1f] text-white">
+    <nav
+      x-data="{ mobileMenuIsOpen: false }"
+      @click.away="mobileMenuIsOpen = false"
+      class="flex items-center justify-between border-b border-neutral-300 px-36 py-4 dark:border-neutral-700"
+      aria-label="penguin ui menu"
+    >
+      <a href="" class="text-2xl font-bold text-[#d6efd9]">
+        <span
+          >Brown<span class="text-black dark:text-[#78aa77]">.nice</span>_</span
+        >
+        <!-- <img src="./your-logo.svg" alt="brand logo" class="w-10" /> -->
+      </a>
+      <!-- Desktop Menu -->
+      <ul class="hidden items-center gap-4 md:flex">
+        <li>
+          <a
+            href="#about"
+            class="font-medium text-neutral-600 underline-offset-2 hover:text-black focus:outline-none focus:underline dark:text-neutral-300 dark:hover:text-[#78aa77]"
+            >About Us</a
+          >
+        </li>
+        <li>
+          <a
+            href="#products"
+            class="font-medium text-neutral-600 underline-offset-2 hover:text-black focus:outline-none focus:underline dark:text-neutral-300 dark:hover:text-[#78aa77]"
+            >Products</a
+          >
+        </li>
+        <li>
+          <a
+            href="#faq"
+            class="font-medium text-neutral-600 underline-offset-2 hover:text-black focus:outline-none focus:underline dark:text-neutral-300 dark:hover:text-[#78aa77]"
+            >FAQ</a
+          >
+        </li>
+      </ul>
+      <!-- Mobile Menu Button -->
+      <button
+        @click="mobileMenuIsOpen = !mobileMenuIsOpen"
+        :aria-expanded="mobileMenuIsOpen"
+        :class="mobileMenuIsOpen ? 'fixed top-6 right-6 z-20' : null"
+        type="button"
+        class="flex text-neutral-600 dark:text-neutral-300 md:hidden"
+        aria-label="mobile menu"
+        aria-controls="mobileMenu"
+      >
+        <svg
+          x-cloak
+          x-show="!mobileMenuIsOpen"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+        <svg
+          x-cloak
+          x-show="mobileMenuIsOpen"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18 18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <!-- Mobile Menu -->
+      <ul
+        x-cloak
+        x-show="mobileMenuIsOpen"
+        x-transition:enter="transition motion-reduce:transition-none ease-out duration-300"
+        x-transition:enter-start="-translate-y-full"
+        x-transition:enter-end="translate-y-0"
+        x-transition:leave="transition motion-reduce:transition-none ease-out duration-300"
+        x-transition:leave-start="translate-y-0"
+        x-transition:leave-end="-translate-y-full"
+        id="mobileMenu"
+        class="fixed max-h-svh overflow-y-auto inset-x-0 top-0 z-10 flex flex-col divide-y divide-neutral-300 rounded-b-2xl border-b border-neutral-300 bg-neutral-50 px-6 pb-6 pt-20 dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-900 md:hidden"
+      >
+        <li class="py-4">
+          <a
+            href="#about"
+            class="w-full text-lg font-medium text-neutral-600 focus:underline dark:text-neutral-300"
+            >About Us</a
+          >
+        </li>
+        <li class="py-4">
+          <a
+            href="#products"
+            class="w-full text-lg font-medium text-neutral-600 focus:underline dark:text-neutral-300"
+            >Products</a
+          >
+        </li>
+        <li class="py-4">
+          <a
+            href="#faq"
+            class="w-full text-lg font-medium text-neutral-600 focus:underline dark:text-neutral-300"
+            >FAQ</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <main class="flex flex-col items-center justify-between p-36">
+      <div class="flex">
+        <div class="pt-16 pr-8 text-right">
+          <h1 class="text-7xl font-bold mb-4 text-white">
+            <span class="text-[#A78BFA]">Brownies Crispy</span><br />
+            Sehat,<br />
+            Enak, dan Murah.
+          </h1>
+        </div>
+        <div class="w-1/2">
+          <img
+            src="https://assets.epicurious.com/photos/590b95360143f0435eca7ab1/4:3/w_2948,h_2211,c_limit/Crispy-Brownie-Thins-03052017.jpg"
+            alt=""
+            class="w-[30rem] h-[30rem] rounded-full"
+          />
+        </div>
+      </div>
+
+      <section id="products" class="py-20">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold mb-12 text-center">Variant Brownies</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-[#2f2f2f] rounded-lg shadow-md overflow-hidden">
+              <img
+                src="https://foodfolksandfun.net/wp-content/uploads/2015/02/Copycat-Brownie-Brittle-Recipe-3.jpg"
+                alt="Original Brownies"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="font-bold text-xl mb-2">Original Brownies</h3>
+                <p class="text-gray-300 mb-4">
+                  Topping klasik yang mempertahankan cita rasa autentik brownies
+                  crispy. Perpaduan sempurna antara cokelat yang kaya dan
+                  tekstur renyah menjadikan varian ini favorit semua orang.
+                  Ideal untuk pecinta brownies tradisional yang ingin menikmati
+                  rasa otentik tanpa tambahan rasa lain..
+                </p>
+                <div class="flex justify-between items-center">
+                  <p class="text-brown-600 font-bold line-through">
+                    Rp. 12.000
+                  </p>
+                  <p class="text-red-500 font-bold">Promo Price: Rp. 8000</p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-[#2f2f2f] rounded-lg shadow-md overflow-hidden">
+              <img
+                src="https://cdn.apartmenttherapy.info/image/upload/v1677865572/k/Edit/2023-03-brownie-brittle/brownie-brittle-6866.jpg"
+                alt="Cheese Brownies"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="font-bold text-xl mb-2">Cheese Brownies</h3>
+                <p class="text-gray-300 mb-4">
+                  Brownies crispy dengan topping keju yang gurih dan creamy.
+                  Kombinasi rasa manis brownies dan keju yang lembut menciptakan
+                  sensasi rasa unik, menggugah selera. Cocok untuk kamu yang
+                  suka perpaduan antara manis dan gurih dalam satu gigitan.
+                </p>
+                <div class="flex justify-between items-center">
+                  <p class="text-brown-600 font-bold line-through">
+                    Rp. 12.000
+                  </p>
+                  <p class="text-red-500 font-bold">Promo Price: Rp. 8000</p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-[#2f2f2f] rounded-lg shadow-md overflow-hidden">
+              <img
+                src="https://down-id.img.susercontent.com/file/ca67a21d4d9d0a4a983f856cdedda829"
+                alt="Almond Brownies"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="font-bold text-xl mb-2">Almond Brownies</h3>
+                <p class="text-gray-300 mb-4">
+                  Topping kacang almond yang renyah dan kaya nutrisi memberikan
+                  tekstur ekstra pada brownies crispy. Rasa manis cokelat
+                  berpadu sempurna dengan kacang almond yang gurih,
+                  menjadikannya pilihan tepat untuk kamu yang menginginkan
+                  camilan dengan sentuhan lebih mewah dan sehat.
+                </p>
+                <div class="flex justify-between items-center">
+                  <p class="text-brown-600 font-bold line-through">
+                    Rp. 12.000
+                  </p>
+                  <p class="text-red-500 font-bold">Promo Price: Rp. 8000</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="py-20 bg-brown-100">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold mb-8 text-center">
+            About Crispy Delights
+          </h2>
+          <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+              <img
+                src="/assets/brownies-product.jpg"
+                alt="Our Bakery"
+                class="rounded-2xl shadow-md opacity-70"
+              />
+            </div>
+            <div class="md:w-1/2 md:pl-8">
+              <p class="text-lg mb-4">
+                Brownies Crispy adalah camilan inovatif yang menggabungkan
+                kelezatan brownies klasik dengan tekstur renyah yang unik.
+                Dibuat tanpa pengawet buatan dan hanya menggunakan bahan-bahan
+                berkualitas, Brownies Crispy hadir dengan berbagai varian
+                topping seperti cokelat chips, original, keju, dan almond.
+              </p>
+              <p class="text-lg mb-16">
+                Camilan ini tidak hanya lezat, tetapi juga lebih sehat dan cocok
+                untuk dinikmati kapan saja.
+              </p>
+              <p class="text-xs text-red-300">
+                *Setiap pembelian beruntung disertai dengan kartu QR yang
+                memberi akses ke website resmi dan menawarkan diskon spesial
+                sebagai bentuk apresiasi kepada pelanggan beruntung.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="py-20">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold mb-8 text-center">Hubungi Kami</h2>
+          <div class="mb-8 md:mb-0">
+            <h3 class="text-xl font-bold mb-4">Informasi Kontak</h3>
+            <p class="mb-2"><strong>Telepon:</strong> +62 896-2671-1364</p>
+            <p class="mb-2">
+              <strong>Whatsapp: </strong
+              ><a
+                href="https://wa.me/6289626711364"
+                target="_blank"
+                class="text-blue-500 underline"
+              >
+                Klik disini!</a
+              >
+            </p>
+            <p class="mb-4"><strong>Alamat:</strong> SMK Bukit Asam</p>
+            <h3 class="text-xl font-bold mb-4">Jam Operasi</h3>
+            <p class="mb-2">Senin - Kamis: 07:00 - 14:00</p>
+            <p class="mb-2">Jumat: 07:00 - 13:00</p>
+            <p>Sabtu - Minggu: Closed</p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="faq"
+        class="w-full divide-y divide-neutral-300 overflow-hidden rounded-2xl border border-neutral-300 bg-neutral-50/40 text-neutral-600 dark:divide-neutral-700 dark:border-neutral-700 dark:bg-neutral-900/50 dark:text-neutral-300"
+      >
+        <div
+          x-data="{ isExpanded: false }"
+          class="divide-y divide-neutral-300 dark:divide-neutral-700"
+        >
+          <button
+            id="controlsAccordionItemOne"
+            type="button"
+            class="flex w-full items-center justify-between gap-4 bg-neutral-50 p-4 text-left underline-offset-2 hover:bg-neutral-50/75 focus-visible:bg-neutral-50/75 focus-visible:underline focus-visible:outline-none dark:bg-neutral-900 dark:hover:bg-neutral-900/75 dark:focus-visible:bg-neutral-900/75"
+            aria-controls="accordionItemOne"
+            @click="isExpanded = ! isExpanded"
+            :class="isExpanded ? 'text-onSurfaceStrong dark:text-onSurfaceDarkStrong font-bold'  : 'text-onSurface dark:text-onSurfaceDark font-medium'"
+            :aria-expanded="isExpanded ? 'true' : 'false'"
+          >
+            Apakah Brownies Crispy menggunakan pengawet?
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke="currentColor"
+              class="size-5 shrink-0 transition"
+              aria-hidden="true"
+              :class="isExpanded  ?  'rotate-180'  :  ''"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </button>
+          <div
+            x-cloak
+            x-show="isExpanded"
+            id="accordionItemOne"
+            role="region"
+            aria-labelledby="controlsAccordionItemOne"
+            x-collapse
+          >
+            <div class="p-4 text-sm sm:text-base text-pretty">
+              Tidak, Brownies Crispy dibuat tanpa menggunakan pengawet buatan.
+              Kami hanya menggunakan bahan-bahan berkualitas yang aman dan
+              sehat.
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ isExpanded: false }"
+          class="divide-y divide-neutral-300 dark:divide-neutral-700"
+        >
+          <button
+            id="controlsAccordionItemTwo"
+            type="button"
+            class="flex w-full items-center justify-between gap-4 bg-neutral-50 p-4 text-left underline-offset-2 hover:bg-neutral-50/75 focus-visible:bg-neutral-50/75 focus-visible:underline focus-visible:outline-none dark:bg-neutral-900 dark:hover:bg-neutral-900/75 dark:focus-visible:bg-neutral-900/75"
+            aria-controls="accordionItemTwo"
+            @click="isExpanded = ! isExpanded"
+            :class="isExpanded ? 'text-onSurfaceStrong dark:text-onSurfaceDarkStrong font-bold'  : 'text-onSurface dark:text-onSurfaceDark font-medium'"
+            :aria-expanded="isExpanded ? 'true' : 'false'"
+          >
+            Apa saja varian topping yang tersedia?
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke="currentColor"
+              class="size-5 shrink-0 transition"
+              aria-hidden="true"
+              :class="isExpanded  ?  'rotate-180'  :  ''"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </button>
+          <div
+            x-cloak
+            x-show="isExpanded"
+            id="accordionItemTwo"
+            role="region"
+            aria-labelledby="controlsAccordionItemTwo"
+            x-collapse
+          >
+            <div class="p-4 text-sm sm:text-base text-pretty">
+              Kami menawarkan tiga varian topping, yaitu Original (tanpa topping
+              tambahan), Cheese (keju gurih), dan Almond (dengan taburan kacang
+              almond yang renyah).
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ isExpanded: false }"
+          class="divide-y divide-neutral-300 dark:divide-neutral-700"
+        >
+          <button
+            id="controlsAccordionItemThree"
+            type="button"
+            class="flex w-full items-center justify-between gap-4 bg-neutral-50 p-4 text-left underline-offset-2 hover:bg-neutral-50/75 focus-visible:bg-neutral-50/75 focus-visible:underline focus-visible:outline-none dark:bg-neutral-900 dark:hover:bg-neutral-900/75 dark:focus-visible:bg-neutral-900/75"
+            aria-controls="accordionItemThree"
+            @click="isExpanded = ! isExpanded"
+            :class="isExpanded ? 'text-onSurfaceStrong dark:text-onSurfaceDarkStrong font-bold'  : 'text-onSurface dark:text-onSurfaceDark font-medium'"
+            :aria-expanded="isExpanded ? 'true' : 'false'"
+          >
+            Berapa lama masa simpan Brownies Crispy tanpa pengawet?
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke="currentColor"
+              class="size-5 shrink-0 transition"
+              aria-hidden="true"
+              :class="isExpanded  ?  'rotate-180'  :  ''"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </button>
+          <div
+            x-cloak
+            x-show="isExpanded"
+            id="accordionItemThree"
+            role="region"
+            aria-labelledby="controlsAccordionItemThree"
+            x-collapse
+          >
+            <div class="p-4 text-sm sm:text-base text-pretty">
+              Meskipun tanpa pengawet, Brownies Crispy memiliki masa simpan
+              sekitar 2-3 minggu jika disimpan di tempat yang sejuk dan kering.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-brown-800 text-white py-4">
+      <div class="container mx-auto px-4 text-center">
+        <p>&copy; 2024 Brownice. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
